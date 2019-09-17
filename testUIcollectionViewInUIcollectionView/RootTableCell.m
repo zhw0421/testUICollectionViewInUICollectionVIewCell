@@ -43,7 +43,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RootCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:K_Cell forIndexPath:indexPath];
-    cell.textStr = self.dataAry[indexPath.row];
+    cell.textStr = [NSString stringWithFormat:@"%li",indexPath.row];
     return cell;
 }
 

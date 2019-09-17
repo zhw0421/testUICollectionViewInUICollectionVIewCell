@@ -10,6 +10,5 @@
 
 @interface RootTableCell : UICollectionViewCell
 @property (nonatomic, strong) NSIndexPath *indexPath;
-@property (nonatomic, strong) NSArray *dataAry;
 -(void)updateData;
 @end
