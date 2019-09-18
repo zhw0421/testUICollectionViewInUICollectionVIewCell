@@ -12,9 +12,9 @@
 		BFE2B0142330BDC000A8DC71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B0132330BDC000A8DC71 /* main.m */; };
 		BFE2B01E2330BDC000A8DC71 /* testUIcollectionViewInUIcollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B01D2330BDC000A8DC71 /* testUIcollectionViewInUIcollectionViewTests.m */; };
 		BFE2B0292330BDC000A8DC71 /* testUIcollectionViewInUIcollectionViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B0282330BDC000A8DC71 /* testUIcollectionViewInUIcollectionViewUITests.m */; };
-		BFE2B03B2330C9DC00A8DC71 /* RootCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B0392330C9DB00A8DC71 /* RootCollectionCell.m */; };
-		BFE2B03E2330CA2500A8DC71 /* RootTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B03D2330CA2500A8DC71 /* RootTableCell.m */; };
 		BFE2B0412330F99500A8DC71 /* ZHWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B0402330F99500A8DC71 /* ZHWViewController.m */; };
+		BFE76A2C233208C300D22876 /* ZHWVerticalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE76A2B233208C300D22876 /* ZHWVerticalCollectionViewCell.m */; };
+		BFE76A2F23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE76A2E23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,12 +47,12 @@
 		BFE2B0242330BDC000A8DC71 /* testUIcollectionViewInUIcollectionViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testUIcollectionViewInUIcollectionViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE2B0282330BDC000A8DC71 /* testUIcollectionViewInUIcollectionViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testUIcollectionViewInUIcollectionViewUITests.m; sourceTree = "<group>"; };
 		BFE2B02A2330BDC000A8DC71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFE2B0392330C9DB00A8DC71 /* RootCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootCollectionCell.m; sourceTree = "<group>"; };
-		BFE2B03A2330C9DB00A8DC71 /* RootCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootCollectionCell.h; sourceTree = "<group>"; };
-		BFE2B03C2330CA2500A8DC71 /* RootTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTableCell.h; sourceTree = "<group>"; };
-		BFE2B03D2330CA2500A8DC71 /* RootTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableCell.m; sourceTree = "<group>"; };
 		BFE2B03F2330F99500A8DC71 /* ZHWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHWViewController.h; sourceTree = "<group>"; };
 		BFE2B0402330F99500A8DC71 /* ZHWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHWViewController.m; sourceTree = "<group>"; };
+		BFE76A2A233208C300D22876 /* ZHWVerticalCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHWVerticalCollectionViewCell.h; sourceTree = "<group>"; };
+		BFE76A2B233208C300D22876 /* ZHWVerticalCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHWVerticalCollectionViewCell.m; sourceTree = "<group>"; };
+		BFE76A2D23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHWHorizontalCollectionViewCell.h; sourceTree = "<group>"; };
+		BFE76A2E23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHWHorizontalCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,15 +105,15 @@
 			children = (
 				BFE2B0042330BDBE00A8DC71 /* AppDelegate.h */,
 				BFE2B0052330BDBE00A8DC71 /* AppDelegate.m */,
-				BFE2B03A2330C9DB00A8DC71 /* RootCollectionCell.h */,
-				BFE2B0392330C9DB00A8DC71 /* RootCollectionCell.m */,
-				BFE2B03C2330CA2500A8DC71 /* RootTableCell.h */,
-				BFE2B03D2330CA2500A8DC71 /* RootTableCell.m */,
 				BFE2B00D2330BDC000A8DC71 /* Assets.xcassets */,
 				BFE2B0122330BDC000A8DC71 /* Info.plist */,
 				BFE2B0132330BDC000A8DC71 /* main.m */,
 				BFE2B03F2330F99500A8DC71 /* ZHWViewController.h */,
 				BFE2B0402330F99500A8DC71 /* ZHWViewController.m */,
+				BFE76A2A233208C300D22876 /* ZHWVerticalCollectionViewCell.h */,
+				BFE76A2B233208C300D22876 /* ZHWVerticalCollectionViewCell.m */,
+				BFE76A2D23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.h */,
+				BFE76A2E23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.m */,
 			);
 			path = testUIcollectionViewInUIcollectionView;
 			sourceTree = "<group>";
@@ -265,10 +265,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE2B0412330F99500A8DC71 /* ZHWViewController.m in Sources */,
-				BFE2B03E2330CA2500A8DC71 /* RootTableCell.m in Sources */,
+				BFE76A2C233208C300D22876 /* ZHWVerticalCollectionViewCell.m in Sources */,
 				BFE2B0142330BDC000A8DC71 /* main.m in Sources */,
+				BFE76A2F23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.m in Sources */,
 				BFE2B0062330BDBE00A8DC71 /* AppDelegate.m in Sources */,
-				BFE2B03B2330C9DC00A8DC71 /* RootCollectionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -408,7 +408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

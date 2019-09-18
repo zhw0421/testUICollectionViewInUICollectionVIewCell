@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZHWViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
     
 }
-@property (strong, nonatomic)UICollectionView *collectionView;
 
+@property (strong, nonatomic)UICollectionView *verticalCollectionView;
 
 @end
 
