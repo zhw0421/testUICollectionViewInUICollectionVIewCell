@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
     
 }
 
-@property (strong, nonatomic)UICollectionView *verticalCollectionView;
+@property (strong, nonatomic) UICollectionView *verticalCollectionView;
+
+@property (strong, nonatomic) NSMutableArray *dataArr;
 
 @end
 

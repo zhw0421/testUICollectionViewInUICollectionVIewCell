@@ -8,6 +8,7 @@
 
 #import "ZHWViewController.h"
 #import "ZHWVerticalCollectionViewCell.h"
+#import "ZHWBaseModel.h"
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
@@ -21,6 +22,23 @@
 {
     [super viewDidLoad];
     [self.view addSubview:self.verticalCollectionView];
+    [self initData];
+    [self.verticalCollectionView reloadData];
+}
+
+-(void)initData{
+    ZHWBaseModel *baseModel;
+    NSMutableArray *arr;
+    for (int i = 0; i < 10; i++) {
+        arr = [NSMutableArray array];
+        for (int j = 0; j < 3; j++) {
+            baseModel = [[ZHWBaseModel alloc] init];
+            baseModel.coordinatesX = j;
+            baseModel.coordinatesY = i;
+            [arr addObject:baseModel];
+        }
+        [self.dataArr addObject:arr];
+    }
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -56,7 +74,7 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return _dataArr.count;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -68,7 +86,7 @@
 {
     static NSString * CellIdentifier = @"ZHWVerticalCollectionViewCell";
     ZHWVerticalCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    [cell updateData];
+    [cell updateData:self.dataArr[indexPath.row]];
     return cell;
 }
 
@@ -93,4 +111,10 @@
     return _verticalCollectionView;
 }
 
+-(NSMutableArray *)dataArr{
+    if (!_dataArr) {
+        _dataArr = [NSMutableArray array];
+    }
+    return _dataArr;
+}
 @end

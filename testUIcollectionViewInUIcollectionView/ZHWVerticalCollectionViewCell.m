@@ -8,8 +8,9 @@
 
 #import "ZHWVerticalCollectionViewCell.h"
 #import "ZHWHorizontalCollectionViewCell.h"
-#define K_Cell @"ZHWHorizontalCollectionViewCell"
+#import "ZHWBaseModel.h"
 
+#define K_Cell @"ZHWHorizontalCollectionViewCell"
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 @interface ZHWVerticalCollectionViewCell ()<UICollectionViewDelegate, UICollectionViewDataSource>
@@ -27,8 +28,17 @@
     return self;
 }
 
--(void)updateData{
+-(void)updateData:(NSMutableArray *)horizontalDataArr{
+    self.horizontalDataArr = horizontalDataArr;
     [self.horizontalCollectionView reloadData];
+    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    for (ZHWBaseModel *baseModel in self.horizontalDataArr) {
+        if (baseModel.isSelectedModel) {
+            scrollIndexPath = [NSIndexPath indexPathForRow:baseModel.coordinatesX inSection:0];
+        }
+    }
+    [self.horizontalCollectionView scrollToItemAtIndexPath:scrollIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    
 }
 
 #pragma mark UIScrollViewDelegate
@@ -54,11 +64,19 @@
     NSArray *indexPaths = [self.horizontalCollectionView indexPathsForVisibleItems];
     NSIndexPath *indexPath = indexPaths.firstObject;
     NSLog(@"zhw horizontalCollectionView的indexPath == %@",indexPath);
+    ZHWBaseModel *selectedModel = self.horizontalDataArr[indexPath.row];
+    for (ZHWBaseModel *baseModel in self.horizontalDataArr) {
+        if ([baseModel isEqual:selectedModel]) {
+            baseModel.isSelectedModel = YES;
+        }else{
+            baseModel.isSelectedModel = NO;
+        }
+    }
 }
 
 #pragma mark ====== UICollectionViewDelegate ======
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+    return self.horizontalDataArr.count;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -68,7 +86,15 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ZHWHorizontalCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:K_Cell forIndexPath:indexPath];
-    cell.textStr = [NSString stringWithFormat:@"%li",indexPath.row];
+    ZHWBaseModel *baseModel = self.horizontalDataArr[indexPath.row];
+    cell.textStr = [NSString stringWithFormat:@"x == %li y == %li",baseModel.coordinatesX,baseModel.coordinatesY];
+    if (indexPath.row == 0) {
+        cell.backgroundColor = [UIColor redColor];
+    }else if (indexPath.row == 1) {
+        cell.backgroundColor = [UIColor greenColor];
+    }else{
+        cell.backgroundColor = [UIColor blueColor];
+    }
     return cell;
 }
 
@@ -91,5 +117,12 @@
         _horizontalCollectionView.backgroundColor = [UIColor whiteColor];
     }
     return _horizontalCollectionView;
+}
+
+-(NSMutableArray *)horizontalDataArr{
+    if (!_horizontalDataArr) {
+        _horizontalDataArr = [NSMutableArray array];
+    }
+    return _horizontalDataArr;
 }
 @end

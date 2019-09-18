@@ -16,7 +16,6 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.titleLabel.frame = CGRectMake(0, ([UIScreen mainScreen].bounds.size.height - 60)/2, [UIScreen mainScreen].bounds.size.width, 60);
-        self.backgroundColor = [UIColor colorWithRed:arc4random() % 256 / 255.0 green:arc4random() % 256 / 255.0 blue:arc4random() % 256 / 255.0 alpha:1.0];
     }
     return self;
 }

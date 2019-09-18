@@ -14,9 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UICollectionView *horizontalCollectionView;
 
-@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, strong) NSIndexPath *verticalIndexPath;
 
--(void)updateData;
+@property (strong, nonatomic) NSMutableArray *horizontalDataArr;
+
+-(void)updateData:(NSMutableArray *)horizontalDataArr;
 
 @end
 
