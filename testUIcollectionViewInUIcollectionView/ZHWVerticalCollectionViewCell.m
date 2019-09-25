@@ -63,7 +63,6 @@
 -(void)scrollViewDidEndScroll{
     NSArray *indexPaths = [self.horizontalCollectionView indexPathsForVisibleItems];
     NSIndexPath *indexPath = indexPaths.firstObject;
-    NSLog(@"zhw horizontalCollectionView的indexPath == %@",indexPath);
     ZHWBaseModel *selectedModel = self.horizontalDataArr[indexPath.row];
     for (ZHWBaseModel *baseModel in self.horizontalDataArr) {
         if ([baseModel isEqual:selectedModel]) {
@@ -71,6 +70,9 @@
         }else{
             baseModel.isSelectedModel = NO;
         }
+    }
+    if (_delegate && [_delegate conformsToProtocol:@protocol(ZHWVerticalCollectionViewCellDelegate)] && [_delegate respondsToSelector:@selector(scrollViewDidEndScrollSelectedModel:)]) {
+        [_delegate scrollViewDidEndScrollSelectedModel:selectedModel];
     }
 }
 

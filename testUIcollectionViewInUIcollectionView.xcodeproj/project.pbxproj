@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF56DFA7233B4009001E25D3 /* ZHWVerticalCollectionViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHWVerticalCollectionViewCellDelegate.h; sourceTree = "<group>"; };
 		BFE2B0012330BDBE00A8DC71 /* testUIcollectionViewInUIcollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testUIcollectionViewInUIcollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE2B0042330BDBE00A8DC71 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BFE2B0052330BDBE00A8DC71 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 				BFE76A2E23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.m */,
 				BFE76B7D23321B0D00D22876 /* ZHWBaseModel.h */,
 				BFE76B7E23321B0D00D22876 /* ZHWBaseModel.m */,
+				BF56DFA7233B4009001E25D3 /* ZHWVerticalCollectionViewCellDelegate.h */,
 			);
 			path = testUIcollectionViewInUIcollectionView;
 			sourceTree = "<group>";

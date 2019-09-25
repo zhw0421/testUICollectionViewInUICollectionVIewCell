@@ -68,7 +68,9 @@
 -(void)scrollViewDidEndScroll{
     NSArray *indexPaths = [self.verticalCollectionView indexPathsForVisibleItems];
     NSIndexPath *indexPath = indexPaths.firstObject;
-    NSLog(@"zhw verticalCollectionView的indexPath == %@",indexPath);
+    NSArray *horizonArr = self.dataArr[indexPath.row];
+    ZHWBaseModel *verticalModel = [horizonArr firstObject];
+    NSLog(@"zhw 竖向滑动选中的verticalModel x== %ld y = %ld",(long)verticalModel.coordinatesX, verticalModel.coordinatesY);
 }
 #pragma mark -- UICollectionViewDataSource
 
@@ -82,10 +84,19 @@
     return 1;
 }
 
+
+#pragma mark ZHWVerticalCollectionViewCellDelegate
+
+-(void)scrollViewDidEndScrollSelectedModel:(ZHWBaseModel *)selectedModel{
+    NSLog(@"zhw 横向滑动选中的horizonModelx== %ld y = %ld",selectedModel.coordinatesX,selectedModel.coordinatesY);
+}
+
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString * CellIdentifier = @"ZHWVerticalCollectionViewCell";
     ZHWVerticalCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.delegate = self;
     [cell updateData:self.dataArr[indexPath.row]];
     return cell;
 }

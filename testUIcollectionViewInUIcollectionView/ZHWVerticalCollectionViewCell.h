@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ZHWVerticalCollectionViewCellDelegate.h";
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZHWVerticalCollectionViewCell : UICollectionViewCell
@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSIndexPath *verticalIndexPath;
 
 @property (strong, nonatomic) NSMutableArray *horizontalDataArr;
+
+@property (nonatomic, weak) id<ZHWVerticalCollectionViewCellDelegate> delegate;
 
 -(void)updateData:(NSMutableArray *)horizontalDataArr;
 
