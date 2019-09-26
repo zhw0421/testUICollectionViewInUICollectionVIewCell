@@ -21,9 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view addSubview:self.verticalCollectionView];
     [self initData];
-    [self.verticalCollectionView reloadData];
 }
 
 -(void)initData{
@@ -33,12 +31,14 @@
         arr = [NSMutableArray array];
         for (int j = 0; j < 3; j++) {
             baseModel = [[ZHWBaseModel alloc] init];
-            baseModel.coordinatesX = j;
-            baseModel.coordinatesY = i;
+            baseModel.desc = @"zhw";
             [arr addObject:baseModel];
         }
         [self.dataArr addObject:arr];
     }
+    [self.verticalCollectionView reloadData];
+    [self.verticalCollectionView layoutIfNeeded];
+    [self resetContainerPlayerView:nil];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -66,11 +66,10 @@
 
 #pragma mark -- scrollViewDidEndScroll 获取当前选中的item
 -(void)scrollViewDidEndScroll{
-    NSArray *indexPaths = [self.verticalCollectionView indexPathsForVisibleItems];
-    NSIndexPath *indexPath = indexPaths.firstObject;
-    NSArray *horizonArr = self.dataArr[indexPath.row];
-    ZHWBaseModel *verticalModel = [horizonArr firstObject];
-    NSLog(@"zhw 竖向滑动选中的verticalModel x== %ld y = %ld",(long)verticalModel.coordinatesX, verticalModel.coordinatesY);
+    ZHWHorizontalCollectionViewCell * cell = [self currentSelectedCell];
+    ZHWBaseModel *model = cell.model;
+    NSLog(@"zhw 竖向滑动 x== %ld y = %ld",(long)model.coordinatesX, model.coordinatesY);
+    [self resetContainerPlayerView:nil];
 }
 #pragma mark -- UICollectionViewDataSource
 
@@ -86,21 +85,30 @@
 
 
 #pragma mark ZHWVerticalCollectionViewCellDelegate
-
--(void)scrollViewDidEndScrollSelectedModel:(ZHWBaseModel *)selectedModel{
-    NSLog(@"zhw 横向滑动选中的horizonModelx== %ld y = %ld",selectedModel.coordinatesX,selectedModel.coordinatesY);
+//获取横向的当前的indexPath
+-(void)horiziontalCellScrollViewDidEndScroll:(ZHWBaseModel *)baseModel{
+    
+    ZHWHorizontalCollectionViewCell * cell =[self currentSelectedCell];
+    ZHWBaseModel *model = cell.model;
+    NSLog(@"zhw 横向滑动 x== %ld y = %ld",(long)model.coordinatesX, model.coordinatesY);
+    [self resetContainerPlayerView:nil];
+    
 }
 
+-(void)horiziontalCellForItemAtIndexPath{
+    //    [self resetContainerPlayerView];
+}
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString * CellIdentifier = @"ZHWVerticalCollectionViewCell";
     ZHWVerticalCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.delegate = self;
-    [cell updateData:self.dataArr[indexPath.row]];
+    [cell updateData:self.dataArr[indexPath.row] verticalIndex:indexPath.row];
+    [self resetContainerPlayerView:cell];
     return cell;
 }
-
+//
 -(UICollectionView *)verticalCollectionView{
     if (!_verticalCollectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -118,6 +126,7 @@
         //注册Cell，必须要有
         [_verticalCollectionView registerClass:[ZHWVerticalCollectionViewCell class] forCellWithReuseIdentifier:@"ZHWVerticalCollectionViewCell"];
         _verticalCollectionView.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:_verticalCollectionView];
     }
     return _verticalCollectionView;
 }
@@ -127,5 +136,72 @@
         _dataArr = [NSMutableArray array];
     }
     return _dataArr;
+}
+
+-(UIView *)containerPlayerView{
+    if (!_containerPlayerView) {
+        _containerPlayerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        [self.view insertSubview:_containerPlayerView aboveSubview:self.verticalCollectionView];
+        _containerPlayerView.backgroundColor = [UIColor redColor];
+    }
+    return _containerPlayerView;
+}
+
+-(ZHWHorizontalCollectionViewCell *)currentSelectedCell{
+    CGPoint centerPoint = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+    NSArray * verticalVisibleCells = [self.verticalCollectionView visibleCells];
+    ZHWVerticalCollectionViewCell *verticalCell;
+    for (ZHWVerticalCollectionViewCell *cell  in verticalVisibleCells) {
+        CGRect verticalCellFrame = [self.verticalCollectionView convertRect:cell.frame toView:[self.verticalCollectionView superview]];
+        if (CGRectContainsPoint(verticalCellFrame, centerPoint)) {
+            verticalCell = cell;
+            break;
+        }
+    }
+    return [self currentHorizontalCell:verticalCell];
+}
+
+//获取当前选中的Cell
+-(ZHWHorizontalCollectionViewCell *)currentHorizontalCell:(ZHWVerticalCollectionViewCell *)verticalCell{
+//    ZHWHorizontalCollectionViewCell *horizontalCell;
+//    NSArray * horizontalVisibleCells = [verticalCell.horizontalCollectionView visibleCells];
+//    for (ZHWHorizontalCollectionViewCell *cell  in horizontalVisibleCells) {
+//        if (cell.model && cell.model.isSelectedModel) {
+//            horizontalCell = cell;
+//            break;
+//        }
+//    }
+    CGPoint centerPoint = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+      NSArray * cells = [verticalCell.horizontalCollectionView visibleCells];
+      ZHWHorizontalCollectionViewCell *testCell;
+      for (ZHWHorizontalCollectionViewCell *cell  in cells) {
+          CGRect frame = [verticalCell.horizontalCollectionView convertRect:cell.frame toView:[verticalCell.horizontalCollectionView superview]];
+          if (CGRectContainsPoint(frame, centerPoint)) {
+              testCell = cell;
+              break;
+          }
+      }
+    
+    return testCell;
+}
+//重置播放器的View到当前View
+-(void)resetContainerPlayerView:(ZHWVerticalCollectionViewCell *)currentVerticalCell{
+    ZHWHorizontalCollectionViewCell * cell;
+    if (currentVerticalCell) {
+        cell = [self currentHorizontalCell:currentVerticalCell];
+    }else{
+        cell = [self currentSelectedCell];
+    }
+    if (!cell) {
+        return;
+    }
+    if([self.containerPlayerView superview]){
+        if ([self.containerPlayerView superview] != cell.videoViewContainer) {
+            [self.containerPlayerView removeFromSuperview];
+            [cell.videoViewContainer addSubview:self.containerPlayerView];
+        }
+    }else{
+        [cell.videoViewContainer addSubview:self.containerPlayerView];
+    }
 }
 @end

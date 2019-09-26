@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(assign,nonatomic) NSInteger coordinatesY;
 
+@property(copy,nonatomic) NSString *desc;
+
 @property(assign,nonatomic) BOOL isSelectedModel;
 
 @end

@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) NSMutableArray *dataArr;
 
+@property (strong, nonatomic) UIView *containerPlayerView;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "ZHWBaseModel.h"
+#import "ZHWHorizontalCollectionViewCell.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol ZHWVerticalCollectionViewCellDelegate <NSObject>
 
-- (void)scrollViewDidEndScrollSelectedModel:(ZHWBaseModel *)selectedModel;
+- (void)horiziontalCellScrollViewDidEndScroll:(ZHWBaseModel *)model;
 
+//执行cellforrow返回的Cell
+- (void)horiziontalCellForItemAtIndexPath;
 
 @end
 

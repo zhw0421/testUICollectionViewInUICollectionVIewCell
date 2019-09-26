@@ -18,9 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) NSMutableArray *horizontalDataArr;
 
+@property (assign,nonatomic) NSInteger verticalIndex;
+
 @property (nonatomic, weak) id<ZHWVerticalCollectionViewCellDelegate> delegate;
 
--(void)updateData:(NSMutableArray *)horizontalDataArr;
+-(void)updateData:(NSMutableArray *)horizontalDataArr verticalIndex :(NSInteger)verticalIndex;
 
 @end
 
