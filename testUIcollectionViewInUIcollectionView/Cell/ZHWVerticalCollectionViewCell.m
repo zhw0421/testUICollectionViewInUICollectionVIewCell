@@ -9,7 +9,8 @@
 #import "ZHWVerticalCollectionViewCell.h"
 #import "ZHWHorizontalCollectionViewCell.h"
 #import "ZHWBaseModel.h"
-
+#import "UIResponder+Router.h"
+#import "ZHWConsts.h"
 #define K_Cell @"ZHWHorizontalCollectionViewCell"
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -42,7 +43,7 @@
         }
         baseModel.coordinatesY = verticalIndex;
         baseModel.coordinatesX = i;
-
+        
     }
     if (!selectBaseModel) {
         selectBaseModel = self.horizontalDataArr[scrollIndexPath.row];
@@ -70,20 +71,14 @@
     }
 }
 
+
+
 #pragma mark -- scrollViewDidEndScroll 获取当前选中的item
 -(void)scrollViewDidEndScroll{
-    NSArray *indexPaths = [self.horizontalCollectionView indexPathsForVisibleItems];
-    NSIndexPath *indexPath = indexPaths.firstObject;
-    ZHWBaseModel *selectedModel = self.horizontalDataArr[indexPath.row];
-    for (ZHWBaseModel *baseModel in self.horizontalDataArr) {
-        if ([baseModel isEqual:selectedModel]) {
-            baseModel.isSelectedModel = YES;
-        }else{
-            baseModel.isSelectedModel = NO;
-        }
-    }
-    if (_delegate && [_delegate conformsToProtocol:@protocol(ZHWVerticalCollectionViewCellDelegate)] && [_delegate respondsToSelector:@selector(horiziontalCellScrollViewDidEndScroll:)]) {
-        [_delegate horiziontalCellScrollViewDidEndScroll:selectedModel];
+    NSIndexPath *indexPath = [self.horizontalCollectionView indexPathForCell:[self currentHorizontalCell]];
+    [self resetSelectedModel:indexPath];
+    if (_delegate && [_delegate conformsToProtocol:@protocol(ZHWVerticalCollectionViewCellDelegate)] && [_delegate respondsToSelector:@selector(horiziontalCellScrollViewDidEndScroll)]) {
+        [_delegate horiziontalCellScrollViewDidEndScroll];
     }
 }
 
@@ -103,6 +98,24 @@
     [cell fillZHWBaseModel:baseModel];
     [self.delegate horiziontalCellForItemAtIndexPath];
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self scrollViewDidEndScroll];
+}
+
+-(void)routerWithEventName:(NSString *)eventName userInfo:(NSDictionary *)userInfo{
+    
+    if ([eventName isEqualToString:ZHWForceScrollerNextEpisode]) {
+        NSIndexPath *currentNSIndexPath = [self.horizontalCollectionView indexPathForCell:[self currentHorizontalCell]];
+        if (currentNSIndexPath.row != self.horizontalDataArr.count - 1) {
+            NSInteger row = currentNSIndexPath.row + 1;
+            NSInteger section = currentNSIndexPath.section;
+            NSIndexPath *willDisplayNSIndexPath = [NSIndexPath indexPathForRow:row inSection:section];
+            [self.horizontalCollectionView scrollToItemAtIndexPath:willDisplayNSIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+            [self resetSelectedModel:willDisplayNSIndexPath];
+        }
+    }
 }
 
 - (UICollectionView *)horizontalCollectionView {
@@ -133,4 +146,31 @@
     return _horizontalDataArr;
 }
 
+
+//获取当前选中的Cell
+-(ZHWHorizontalCollectionViewCell *)currentHorizontalCell{
+    CGPoint centerPoint = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+    NSArray * cells = [self.horizontalCollectionView visibleCells];
+    ZHWHorizontalCollectionViewCell *horizontalCell;
+    for (ZHWHorizontalCollectionViewCell *cell  in cells) {
+        CGRect frame = [self.horizontalCollectionView convertRect:cell.frame toView:[self.horizontalCollectionView superview]];
+        if (CGRectContainsPoint(frame, centerPoint)) {
+            horizontalCell = cell;
+            break;
+        }
+    }
+    
+    return horizontalCell;
+}
+
+-(void)resetSelectedModel:(NSIndexPath *)indexPath{
+    ZHWBaseModel *selectedModel = self.horizontalDataArr[indexPath.row];
+       for (ZHWBaseModel *baseModel in self.horizontalDataArr) {
+           if ([baseModel isEqual:selectedModel]) {
+               baseModel.isSelectedModel = YES;
+           }else{
+               baseModel.isSelectedModel = NO;
+           }
+       }
+}
 @end

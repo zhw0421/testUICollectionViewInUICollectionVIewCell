@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZHWHorizontalCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, strong) UIButton *nextEpisodeBtn;
+
 @property (nonatomic, strong) UILabel *titleLabel;
 //视频的容器
 @property (nonatomic, strong) UIView *videoViewContainer;

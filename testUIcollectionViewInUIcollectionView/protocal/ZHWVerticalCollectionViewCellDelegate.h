@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ZHWVerticalCollectionViewCellDelegate <NSObject>
 
-- (void)horiziontalCellScrollViewDidEndScroll:(ZHWBaseModel *)model;
+- (void)horiziontalCellScrollViewDidEndScroll;
 
 //执行cellforrow返回的Cell
 - (void)horiziontalCellForItemAtIndexPath;

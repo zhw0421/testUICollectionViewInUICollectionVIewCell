@@ -7,6 +7,8 @@
 //
 
 #import "ZHWHorizontalCollectionViewCell.h"
+#import "UIResponder+Router.h"
+#import "ZHWConsts.h"
 @interface ZHWHorizontalCollectionViewCell ()
 
 @end
@@ -17,7 +19,8 @@
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor greenColor];
         [self addSubview:self.videoViewContainer];
-        self.titleLabel.frame = CGRectMake(0, ([UIScreen mainScreen].bounds.size.height - 60)/2, [UIScreen mainScreen].bounds.size.width, 60);
+        [self addSubview:self.nextEpisodeBtn];
+        self.titleLabel.frame = CGRectMake(0, 80, [UIScreen mainScreen].bounds.size.width, 60);
     }
     return self;
 }
@@ -31,8 +34,9 @@
 
 -(void)fillZHWBaseModel:(ZHWBaseModel *)model{
     self.model = model;
-    NSString *textStr = [NSString stringWithFormat:@"x == %li y == %li",self.model.coordinatesX,self.model.coordinatesY];
+    NSString *textStr = [NSString stringWithFormat:@"x == %ld y == %ld",(long)self.model.coordinatesX,(long)self.model.coordinatesY];
     self.titleLabel.text = textStr;
+    [_nextEpisodeBtn setTitle:@"下一集" forState:UIControlStateNormal];
 }
 
 -(UILabel *)titleLabel{
@@ -44,6 +48,21 @@
         [self addSubview:_titleLabel];
     }
     return _titleLabel;
+}
+
+-(UIButton *)nextEpisodeBtn{
+    if (!_nextEpisodeBtn) {
+        _nextEpisodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_nextEpisodeBtn setTitle:@"--" forState:UIControlStateNormal];
+        [_nextEpisodeBtn setBackgroundColor:[UIColor blueColor]];
+        _nextEpisodeBtn.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width - 150)/2, ([UIScreen mainScreen].bounds.size.height - 80)/2, 150, 80);
+        [_nextEpisodeBtn addTarget:self action:@selector(tapNextEpisodeBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _nextEpisodeBtn;
+}
+
+-(void)tapNextEpisodeBtn{
+    [_nextEpisodeBtn routerWithEventName:ZHWForceScrollerNextEpisode userInfo:[NSDictionary dictionary]];
 }
 
 -(UIView *)videoViewContainer{

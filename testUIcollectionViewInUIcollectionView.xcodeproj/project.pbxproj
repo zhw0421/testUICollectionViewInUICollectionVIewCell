@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF56E128233C99DC001E25D3 /* UIResponder+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56E126233C99DB001E25D3 /* UIResponder+Router.m */; };
+		BF56E131233C9C12001E25D3 /* ZHWConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56E130233C9C12001E25D3 /* ZHWConsts.m */; };
 		BFE2B0062330BDBE00A8DC71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B0052330BDBE00A8DC71 /* AppDelegate.m */; };
 		BFE2B00E2330BDC000A8DC71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE2B00D2330BDC000A8DC71 /* Assets.xcassets */; };
 		BFE2B0142330BDC000A8DC71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B0132330BDC000A8DC71 /* main.m */; };
@@ -37,6 +39,10 @@
 
 /* Begin PBXFileReference section */
 		BF56DFA7233B4009001E25D3 /* ZHWVerticalCollectionViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHWVerticalCollectionViewCellDelegate.h; sourceTree = "<group>"; };
+		BF56E126233C99DB001E25D3 /* UIResponder+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Router.m"; sourceTree = "<group>"; };
+		BF56E127233C99DC001E25D3 /* UIResponder+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Router.h"; sourceTree = "<group>"; };
+		BF56E12F233C9C12001E25D3 /* ZHWConsts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHWConsts.h; sourceTree = "<group>"; };
+		BF56E130233C9C12001E25D3 /* ZHWConsts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHWConsts.m; sourceTree = "<group>"; };
 		BFE2B0012330BDBE00A8DC71 /* testUIcollectionViewInUIcollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testUIcollectionViewInUIcollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE2B0042330BDBE00A8DC71 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BFE2B0052330BDBE00A8DC71 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -84,6 +90,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF56E129233C9AF8001E25D3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BFE2B03F2330F99500A8DC71 /* ZHWViewController.h */,
+				BFE2B0402330F99500A8DC71 /* ZHWViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BF56E12A233C9B02001E25D3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BFE76A2A233208C300D22876 /* ZHWVerticalCollectionViewCell.h */,
+				BFE76A2B233208C300D22876 /* ZHWVerticalCollectionViewCell.m */,
+				BFE76A2D23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.h */,
+				BFE76A2E23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BF56E12B233C9B09001E25D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF56E12C233C9B18001E25D3 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				BF56E127233C99DC001E25D3 /* UIResponder+Router.h */,
+				BF56E126233C99DB001E25D3 /* UIResponder+Router.m */,
+				BF56E12F233C9C12001E25D3 /* ZHWConsts.h */,
+				BF56E130233C9C12001E25D3 /* ZHWConsts.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		BF56E12D233C9B46001E25D3 /* protocal */ = {
+			isa = PBXGroup;
+			children = (
+				BF56DFA7233B4009001E25D3 /* ZHWVerticalCollectionViewCellDelegate.h */,
+			);
+			path = protocal;
+			sourceTree = "<group>";
+		};
+		BF56E12E233C9B59001E25D3 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BFE76B7D23321B0D00D22876 /* ZHWBaseModel.h */,
+				BFE76B7E23321B0D00D22876 /* ZHWBaseModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		BFE2AFF82330BDBE00A8DC71 = {
 			isa = PBXGroup;
 			children = (
@@ -109,18 +170,15 @@
 			children = (
 				BFE2B0042330BDBE00A8DC71 /* AppDelegate.h */,
 				BFE2B0052330BDBE00A8DC71 /* AppDelegate.m */,
+				BF56E12E233C9B59001E25D3 /* model */,
+				BF56E12D233C9B46001E25D3 /* protocal */,
+				BF56E12C233C9B18001E25D3 /* Util */,
+				BF56E12B233C9B09001E25D3 /* View */,
+				BF56E12A233C9B02001E25D3 /* Cell */,
+				BF56E129233C9AF8001E25D3 /* ViewController */,
 				BFE2B00D2330BDC000A8DC71 /* Assets.xcassets */,
 				BFE2B0122330BDC000A8DC71 /* Info.plist */,
 				BFE2B0132330BDC000A8DC71 /* main.m */,
-				BFE2B03F2330F99500A8DC71 /* ZHWViewController.h */,
-				BFE2B0402330F99500A8DC71 /* ZHWViewController.m */,
-				BFE76A2A233208C300D22876 /* ZHWVerticalCollectionViewCell.h */,
-				BFE76A2B233208C300D22876 /* ZHWVerticalCollectionViewCell.m */,
-				BFE76A2D23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.h */,
-				BFE76A2E23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.m */,
-				BFE76B7D23321B0D00D22876 /* ZHWBaseModel.h */,
-				BFE76B7E23321B0D00D22876 /* ZHWBaseModel.m */,
-				BF56DFA7233B4009001E25D3 /* ZHWVerticalCollectionViewCellDelegate.h */,
 			);
 			path = testUIcollectionViewInUIcollectionView;
 			sourceTree = "<group>";
@@ -272,9 +330,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE76B7F23321B0D00D22876 /* ZHWBaseModel.m in Sources */,
+				BF56E131233C9C12001E25D3 /* ZHWConsts.m in Sources */,
 				BFE2B0412330F99500A8DC71 /* ZHWViewController.m in Sources */,
 				BFE76A2C233208C300D22876 /* ZHWVerticalCollectionViewCell.m in Sources */,
 				BFE2B0142330BDC000A8DC71 /* main.m in Sources */,
+				BF56E128233C99DC001E25D3 /* UIResponder+Router.m in Sources */,
 				BFE76A2F23320A9F00D22876 /* ZHWHorizontalCollectionViewCell.m in Sources */,
 				BFE2B0062330BDBE00A8DC71 /* AppDelegate.m in Sources */,
 			);

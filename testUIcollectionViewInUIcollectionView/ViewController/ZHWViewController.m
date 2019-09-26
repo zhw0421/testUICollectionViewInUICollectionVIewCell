@@ -86,7 +86,7 @@
 
 #pragma mark ZHWVerticalCollectionViewCellDelegate
 //获取横向的当前的indexPath
--(void)horiziontalCellScrollViewDidEndScroll:(ZHWBaseModel *)baseModel{
+-(void)horiziontalCellScrollViewDidEndScroll{
     
     ZHWHorizontalCollectionViewCell * cell =[self currentSelectedCell];
     ZHWBaseModel *model = cell.model;
@@ -158,40 +158,12 @@
             break;
         }
     }
-    return [self currentHorizontalCell:verticalCell];
+    return [verticalCell currentHorizontalCell];
 }
 
-//获取当前选中的Cell
--(ZHWHorizontalCollectionViewCell *)currentHorizontalCell:(ZHWVerticalCollectionViewCell *)verticalCell{
-//    ZHWHorizontalCollectionViewCell *horizontalCell;
-//    NSArray * horizontalVisibleCells = [verticalCell.horizontalCollectionView visibleCells];
-//    for (ZHWHorizontalCollectionViewCell *cell  in horizontalVisibleCells) {
-//        if (cell.model && cell.model.isSelectedModel) {
-//            horizontalCell = cell;
-//            break;
-//        }
-//    }
-    CGPoint centerPoint = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
-      NSArray * cells = [verticalCell.horizontalCollectionView visibleCells];
-      ZHWHorizontalCollectionViewCell *testCell;
-      for (ZHWHorizontalCollectionViewCell *cell  in cells) {
-          CGRect frame = [verticalCell.horizontalCollectionView convertRect:cell.frame toView:[verticalCell.horizontalCollectionView superview]];
-          if (CGRectContainsPoint(frame, centerPoint)) {
-              testCell = cell;
-              break;
-          }
-      }
-    
-    return testCell;
-}
 //重置播放器的View到当前View
 -(void)resetContainerPlayerView:(ZHWVerticalCollectionViewCell *)currentVerticalCell{
-    ZHWHorizontalCollectionViewCell * cell;
-    if (currentVerticalCell) {
-        cell = [self currentHorizontalCell:currentVerticalCell];
-    }else{
-        cell = [self currentSelectedCell];
-    }
+    ZHWHorizontalCollectionViewCell * cell = [self currentSelectedCell];
     if (!cell) {
         return;
     }

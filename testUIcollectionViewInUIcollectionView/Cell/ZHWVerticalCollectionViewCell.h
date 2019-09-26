@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<ZHWVerticalCollectionViewCellDelegate> delegate;
 
 -(void)updateData:(NSMutableArray *)horizontalDataArr verticalIndex :(NSInteger)verticalIndex;
+//获取当前的Cell
+-(ZHWHorizontalCollectionViewCell *)currentHorizontalCell;
 
 @end
 
