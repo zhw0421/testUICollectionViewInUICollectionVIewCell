@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		BF56E128233C99DC001E25D3 /* UIResponder+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56E126233C99DB001E25D3 /* UIResponder+Router.m */; };
 		BF56E131233C9C12001E25D3 /* ZHWConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56E130233C9C12001E25D3 /* ZHWConsts.m */; };
+		BF56E1AE233CBE8B001E25D3 /* ZHWContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56E1AD233CBE8B001E25D3 /* ZHWContentView.m */; };
+		BF56E1B1233CBEA1001E25D3 /* ZHWProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56E1B0233CBEA1001E25D3 /* ZHWProgressView.m */; };
+		BF56E1B4233CC117001E25D3 /* ZHWSelectEpisodesView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF56E1B3233CC117001E25D3 /* ZHWSelectEpisodesView.m */; };
 		BFE2B0062330BDBE00A8DC71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B0052330BDBE00A8DC71 /* AppDelegate.m */; };
 		BFE2B00E2330BDC000A8DC71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE2B00D2330BDC000A8DC71 /* Assets.xcassets */; };
 		BFE2B0142330BDC000A8DC71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B0132330BDC000A8DC71 /* main.m */; };
@@ -43,6 +46,12 @@
 		BF56E127233C99DC001E25D3 /* UIResponder+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Router.h"; sourceTree = "<group>"; };
 		BF56E12F233C9C12001E25D3 /* ZHWConsts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHWConsts.h; sourceTree = "<group>"; };
 		BF56E130233C9C12001E25D3 /* ZHWConsts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHWConsts.m; sourceTree = "<group>"; };
+		BF56E1AC233CBE8B001E25D3 /* ZHWContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHWContentView.h; sourceTree = "<group>"; };
+		BF56E1AD233CBE8B001E25D3 /* ZHWContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHWContentView.m; sourceTree = "<group>"; };
+		BF56E1AF233CBEA1001E25D3 /* ZHWProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHWProgressView.h; sourceTree = "<group>"; };
+		BF56E1B0233CBEA1001E25D3 /* ZHWProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHWProgressView.m; sourceTree = "<group>"; };
+		BF56E1B2233CC117001E25D3 /* ZHWSelectEpisodesView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHWSelectEpisodesView.h; sourceTree = "<group>"; };
+		BF56E1B3233CC117001E25D3 /* ZHWSelectEpisodesView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHWSelectEpisodesView.m; sourceTree = "<group>"; };
 		BFE2B0012330BDBE00A8DC71 /* testUIcollectionViewInUIcollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testUIcollectionViewInUIcollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE2B0042330BDBE00A8DC71 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BFE2B0052330BDBE00A8DC71 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -113,6 +122,12 @@
 		BF56E12B233C9B09001E25D3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF56E1AC233CBE8B001E25D3 /* ZHWContentView.h */,
+				BF56E1AD233CBE8B001E25D3 /* ZHWContentView.m */,
+				BF56E1AF233CBEA1001E25D3 /* ZHWProgressView.h */,
+				BF56E1B0233CBEA1001E25D3 /* ZHWProgressView.m */,
+				BF56E1B2233CC117001E25D3 /* ZHWSelectEpisodesView.h */,
+				BF56E1B3233CC117001E25D3 /* ZHWSelectEpisodesView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -330,8 +345,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE76B7F23321B0D00D22876 /* ZHWBaseModel.m in Sources */,
+				BF56E1B1233CBEA1001E25D3 /* ZHWProgressView.m in Sources */,
 				BF56E131233C9C12001E25D3 /* ZHWConsts.m in Sources */,
 				BFE2B0412330F99500A8DC71 /* ZHWViewController.m in Sources */,
+				BF56E1AE233CBE8B001E25D3 /* ZHWContentView.m in Sources */,
+				BF56E1B4233CC117001E25D3 /* ZHWSelectEpisodesView.m in Sources */,
 				BFE76A2C233208C300D22876 /* ZHWVerticalCollectionViewCell.m in Sources */,
 				BFE2B0142330BDC000A8DC71 /* main.m in Sources */,
 				BF56E128233C99DC001E25D3 /* UIResponder+Router.m in Sources */,

@@ -8,16 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "ZHWBaseModel.h"
-
+#import "ZHWContentView.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZHWHorizontalCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIButton *nextEpisodeBtn;
-
-@property (nonatomic, strong) UILabel *titleLabel;
 //视频的容器
 @property (nonatomic, strong) UIView *videoViewContainer;
+
+@property (nonatomic, strong) ZHWContentView *zhwContentView;
 
 @property (nonatomic, copy) NSString *textStr;
 
