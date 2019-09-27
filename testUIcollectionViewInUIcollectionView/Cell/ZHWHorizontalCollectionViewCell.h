@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ZHWBaseModel.h"
 #import "ZHWContentView.h"
+#import "ZHWProgressView.h"
+#import "ZHWSelectEpisodesView.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZHWHorizontalCollectionViewCell : UICollectionViewCell
@@ -17,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIView *videoViewContainer;
 
 @property (nonatomic, strong) ZHWContentView *zhwContentView;
+
+@property (nonatomic, strong) ZHWProgressView *zhwProgressView;
+
+@property (nonatomic, strong) ZHWSelectEpisodesView *zhwSelectEpisodesView;
 
 @property (nonatomic, copy) NSString *textStr;
 

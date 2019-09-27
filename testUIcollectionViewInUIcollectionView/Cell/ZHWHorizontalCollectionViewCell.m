@@ -15,9 +15,10 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor greenColor];
         [self addSubview:self.videoViewContainer];
         [self addSubview:self.zhwContentView];
+        [self addSubview:self.zhwProgressView];
+        [self addSubview:self.zhwSelectEpisodesView];
     }
     return self;
 }
@@ -35,12 +36,30 @@
     return _videoViewContainer;
 }
 
--(UIView *)zhwContentView{
+-(ZHWContentView *)zhwContentView{
     if (!_zhwContentView) {
         _zhwContentView = [[ZHWContentView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _zhwContentView.backgroundColor = [UIColor clearColor];
     }
     return _zhwContentView;
+}
+
+-(ZHWProgressView *)zhwProgressView{
+    if (!_zhwProgressView) {
+        _zhwProgressView = [[ZHWProgressView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _zhwProgressView.backgroundColor = [UIColor clearColor];
+        _zhwProgressView.hidden = YES;
+    }
+    return _zhwProgressView;
+}
+
+-(ZHWSelectEpisodesView *)zhwSelectEpisodesView{
+    if (!_zhwSelectEpisodesView) {
+        _zhwSelectEpisodesView = [[ZHWSelectEpisodesView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _zhwSelectEpisodesView.backgroundColor = [UIColor clearColor];
+        _zhwSelectEpisodesView.hidden = YES;
+    }
+    return _zhwSelectEpisodesView;
 }
 
 

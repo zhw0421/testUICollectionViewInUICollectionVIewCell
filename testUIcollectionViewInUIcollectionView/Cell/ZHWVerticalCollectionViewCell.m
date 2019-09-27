@@ -24,7 +24,6 @@
     if (self = [super initWithFrame:frame]) {
         [self.contentView addSubview:self.horizontalCollectionView];
         self.horizontalCollectionView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-        self.backgroundColor = [UIColor redColor];
     }
     return self;
 }
